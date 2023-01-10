@@ -1,0 +1,257 @@
+// COLORS
+$primary-green: #67893C;
+$secondary-green: #B9CF9D;
+$btnhover-dark-green: #3D640C;
+$primary-orange: #D99E47; 
+$btnhover-dark-orange: #955900; 
+$input-border-grey: #c1c1c1;
+
+// FONTS
+$heading-font: 'DM Mono', monospace;
+$body-font: 'DM Sans', sans-serif;
+
+// FONT SIZES
+$heading-font-size: 1.6em;
+$body-font-size: 1.2em;
+$small-font-size: 1em;
+$icon-font-size: 2em;
+
+// LINE HEIGHTS
+$body-font-lineheight: 1.4em;
+
+// BORDER RADIUS
+$border-radius: .3rem;
+
+// BOX SHADOW
+$box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px;
+
+// INPUT BORDER
+$input-border: .15rem solid $input-border-grey;
+
+//-------------------------------------------------------
+// MIXINS
+
+@mixin heading-styling {
+  font-family: $heading-font;
+  font-size: $heading-font-size;
+}
+
+@mixin body-text-styling {
+  font-family: $body-font;
+  font-size: $body-font-size;
+  line-height: $body-font-lineheight;
+}
+
+@mixin small-text-styling {
+  font-family: $body-font;
+  font-size: $small-font-size;
+}
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin for-tablet {
+  @media (min-width: 481px) and (max-width: 768px) {
+  @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-nav {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+//------------------------------------------------------
+
+// Text styling classes
+
+.bold {
+  font-weight: 700;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.small-body {
+  @include small-text-styling;
+}
+
+.body-text {
+  @include body-text-styling;
+}
+
+main {
+  @include flex(column, flex-start, center);
+}
+
+.heading {
+  @include heading-styling;
+}
+
+.cover {
+  margin-top: 2rem;
+  width: 100vw;
+  @include flex(column, flex-start, center);
+}
+
+.cover-img {
+  width: 95vw;
+  height: 25vh;
+  margin-top: 1rem;
+  object-fit: cover;
+  border-radius: $border-radius;
+
+  @include for-tablet {
+    height: 45vh;
+  }
+
+  @include for-desktop {
+    height: 60vh;
+  }
+}
+
+.item-nav {
+  background-color: $primary-orange;
+  margin-top: 2rem;
+  width: 100vw;
+  
+  ul {
+    padding: 1rem;
+    display: flex;
+    list-style-type: none;
+  }
+  
+  li a {
+    @include small-text-styling;
+    padding: 1rem;
+    text-decoration: none;
+    color: black;
+  }
+  
+  li a:hover {
+  background-color: $btnhover-dark-orange;
+  color: white;
+  }
+
+  .active {
+    background-color: $btnhover-dark-orange;
+    color: white;
+  }
+
+}
+
+.product-group {
+
+  @include for-desktop {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.product {
+  width: 90vw;
+  padding: 1rem;
+  @include flex(column, space-between, center);
+  box-shadow: $box-shadow;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  @include for-tablet {
+    padding: 2rem;
+  }
+
+  @include for-desktop {
+    width: 45vw;
+    padding: 2rem;
+  }
+}
+
+.space-between {
+  width: 100%;
+  @include flex(row, space-between, flex-start)
+}
+
+.product-img {
+  width: 100%;
+  height: 30%;
+  object-fit: cover;
+  border-radius: $border-radius;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  @include for-tablet {
+    height: 35%;
+  }
+
+  @include for-desktop {
+    height: 40%;
+  }
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.product-buy {
+  @include flex(row, space-between, flex-start);
+  margin-top: 1rem; 
+  margin-bottom: 1rem; 
+  width: 100%;
+  gap: .5rem;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 30%;
+}
+
+.price {
+  width: 70%;
+  @include flex(column, flex-start, flex-end);
+  margin-top: 1rem;
+}
+
+.quantity-input {
+  padding: .5rem;
+  padding-top: 1rem;
+  text-align: right;
+}
+
+.input {
+  border-radius: $border-radius;
+  border: .15rem solid $input-border-grey;
+  outline: none;
+  font-size: $heading-font-size;
+}
+
+.btn {
+  @include body-text-styling;
+  font-weight: 700;
+  border-radius: $border-radius;
+  border: none;
+}
+
+.green {
+  background: $primary-green;
+  color: white;
+  padding: 1rem 5rem;
+  width: 100%;
+}
+
+.green:hover {
+  background: $btnhover-dark-green;
+}
